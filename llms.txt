@@ -1,0 +1,21 @@
+# karvachauth.pages.dev
+
+Karva Chauth 2026 (Thursday, 29 October 2026, India) — city-wise moonrise times and vrat guide.
+
+## Key pages
+
+- [Home — all 51 city moonrise times](https://karvachauth.pages.dev/): Full table of sunrise, moonrise and fast-length for 51 Indian cities, plus city search.
+- [Vrat Katha — story of Veeravati](https://karvachauth.pages.dev/katha.html): The traditional Karva Chauth katha told during the evening puja.
+- [Sargi guide](https://karvachauth.pages.dev/sargi.html): What to eat before sunrise, traditional items and light modern ideas.
+- [Puja Vidhi](https://karvachauth.pages.dev/vidhi.html): Step-by-step puja method with samagri list.
+- [Mehendi guide](https://karvachauth.pages.dev/mehendi.html): Design styles, timing and aftercare.
+- [Songs](https://karvachauth.pages.dev/songs.html): Popular Karva Chauth playlist.
+
+## City pages
+
+Every city page (/cities/{city}.html) gives: sunrise (sargi deadline), approx puja muhurat, moonrise (fast-breaking time) and fast length, plus a city-specific FAQ and moonrise times in nearby cities. Times are astronomically computed for each city centre in IST; verify with your local panchang.
+
+## Notes
+
+- Fast observed in North America on 28 October 2026 (tithi falls a day earlier there).
+- Independent information site; not affiliated with any religious body.
