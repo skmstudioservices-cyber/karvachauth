@@ -1,0 +1,8 @@
+{
+  "name": "karvachauth",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Karva Chauth 2026 city-wise moonrise time site generator",
+  "scripts": { "build": "node generate.js" },
+  "dependencies": { "suncalc": "^1.9.0" }
+}
