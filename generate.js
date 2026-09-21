@@ -6,6 +6,12 @@ const SITE = 'https://karvachauth.pages.dev';
 const DATE_STR = 'Thursday, 29 October 2026';
 const DATE_ISO = '2026-10-29';
 
+// Ads: set AD_CLIENT to your AdSense publisher ID (e.g. 'ca-pub-XXXXXXXXXXXXXXXX')
+// to enable ad slots. While empty, NO ad containers are rendered at all.
+const AD_CLIENT = '';
+
+const adSlot = () => AD_CLIENT ? `<div class="ad-slot"></div>` : '';
+
 const cities = [
   ['New Delhi','new-delhi',28.6139,77.2090,'Delhi'],
   ['Mumbai','mumbai',19.0760,72.8777,'Maharashtra'],
@@ -98,6 +104,9 @@ function head(title, desc, extra='', canon) {
 <style>body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;margin:0;background:#fdf8f2;color:#2b1a12;line-height:1.6}
 header{background:#7a1f2b;color:#fff;padding:1rem;text-align:center}
 header a{color:#f5d68a;text-decoration:none;font-weight:600}
+nav.menu{background:#5e1721;display:flex;flex-wrap:wrap;justify-content:center;gap:.15rem;padding:.4rem .5rem;position:sticky;top:0;z-index:5}
+nav.menu a{color:#f5d68a;text-decoration:none;font-size:clamp(.82rem,2.5vw,.95rem);padding:.35rem .7rem;border-radius:6px;white-space:nowrap}
+nav.menu a:hover{background:#7a1f2b}
 main{max-width:860px;margin:0 auto;padding:1rem}
 h1{color:#7a1f2b;font-size:clamp(1.4rem,4vw,2rem);line-height:1.25}
 h2{color:#a34a2e;font-size:clamp(1.15rem,3vw,1.5rem);margin-top:1.8rem}
@@ -128,6 +137,15 @@ ${extra}
 </head>
 <body>
 <header><a href="/">🌕 Karva Chauth 2026</a><br><small>${DATE_STR} · City-wise moonrise times</small></header>
+<nav class="menu" aria-label="Main menu">
+<a href="/">Home</a>
+<a href="/katha.html">Vrat Katha</a>
+<a href="/sargi.html">Sargi</a>
+<a href="/vidhi.html">Puja Vidhi</a>
+<a href="/mehendi.html">Mehendi</a>
+<a href="/songs.html">Songs</a>
+<a href="/about.html">About</a>
+</nav>
 <main>`;
 }
 
@@ -171,7 +189,7 @@ for (const c of data) {
 </div>
 <p class="moon">🌕</p>
 <p>The Karva Chauth nirjala fast in <strong>${c.name}</strong> runs from sunrise (<strong>${c.sunriseStr} IST</strong>) until moonrise (<strong>${c.moonriseStr} IST</strong>) — about <strong>${c.fastLen}</strong> without food or water. Women break the fast after sighting the moon through a sieve and offering arghya.</p>
-<div class="ad-slot" aria-hidden="true"></div>
+${adSlot()}
 <h2>Plan for the day in ${c.name}</h2>
 <table>
 <tr><th>Time (IST)</th><th>What happens</th></tr>
@@ -197,7 +215,7 @@ const home = head('Karva Chauth 2026 — Moonrise Time by City (29 October)', 'K
 <p><strong>${DATE_STR}</strong> (India). The nirjala fast begins before sunrise with sargi and is broken only after sighting the moon. The moon rises up to 98 minutes apart across India — check <em>your</em> city, not a forwarded time.</p>
 <p>Fast in North America is observed on <strong>28 October 2026</strong> (the tithi falls a day earlier there).</p>
 <input type="search" id="q" placeholder="Search your city… e.g. Delhi, Jaipur, Indore" oninput="filter(this.value)">
-<div class="ad-slot" aria-hidden="true"></div>
+${adSlot()}
 <div class="grid" id="cards">${data.map(c=>`<div class="card" data-s="${(c.name+' '+c.state).toLowerCase()}"><a href="/cities/${c.slug}.html">${c.name}</a><div class="t">${c.moonriseStr}</div><small>moonrise IST</small></div>`).join('\n')}</div>
 <h2>All cities — full table</h2>
 <table id="tbl"><tr><th>City</th><th>State</th><th>Sunrise</th><th>Moonrise</th><th>Fast length</th></tr>${rows}</table>
@@ -230,7 +248,7 @@ page('katha.html','Karva Chauth Vrat Katha 2026 — Story of Veeravati','Karva C
 <p>The katha reminds everyone keeping the fast what the day is about: patience, love and care for each other, not just ritual. Listening to it together is also how the community of fasting women has always passed the long hours until moonrise.</p>
 <h2>How it is told today</h2>
 <p>An elder woman of the family usually reads the katha while the others sit around the thali, holding karvas filled with water. Small local variations exist — but the story of the devoted wife and the mistaken moon remains the same everywhere.</p>
-<div class="ad-slot" aria-hidden="true"></div>
+${adSlot()}
 <p><a class="btn" href="/vidhi.html">See the full puja vidhi →</a></p>`);
 
 page('sargi.html','Karva Chauth Sargi 2026 — Timing, Items & Meaning','Sargi 2026: what to eat before sunrise on Karva Chauth, traditional sargi items from the mother-in-law, and light modern ideas.',
@@ -246,7 +264,7 @@ page('sargi.html','Karva Chauth Sargi 2026 — Timing, Items & Meaning','Sargi 2
 </table>
 <h2>Simple modern ideas</h2>
 <p>Whole-wheat paratha with paneer, a bowl of curd, a banana, a handful of soaked almonds and 2–3 glasses of water covers most of what you need. Eat slowly, keep it light, and avoid very salty items — they increase thirst through the day.</p>
-<div class="ad-slot" aria-hidden="true"></div>
+${adSlot()}
 <p><a class="btn" href="/cities/new-delhi.html">Check sunrise time in your city →</a></p>`);
 
 page('vidhi.html','Karva Chauth Puja Vidhi 2026 — Step by Step','Karva Chauth 2026 puja vidhi: step-by-step method from sargi to moonrise, puja samagri list, and how to break the fast.',
@@ -266,7 +284,7 @@ page('vidhi.html','Karva Chauth Puja Vidhi 2026 — Step by Step','Karva Chauth 
 </table>
 <h2>At moonrise</h2>
 <p><strong>8.</strong> Once the moon is sighted (check your <a href="/">city moonrise time</a>), offer arghya to the moon through the sieve. <strong>9.</strong> Then look at your husband through the same sieve. <strong>10.</strong> Break the fast with water and sweets — eat gently after the long day.</p>
-<div class="ad-slot" aria-hidden="true"></div>
+${adSlot()}
 <div class="note">Family traditions vary. Follow the customs of your household and elders.</div>`);
 
 page('mehendi.html','Karva Chauth Mehendi 2026 — Design Guide','Karva Chauth mehendi guide: traditional, minimal and Arabic design ideas, application timing, and aftercare for dark colour.',
@@ -283,7 +301,7 @@ page('mehendi.html','Karva Chauth Mehendi 2026 — Design Guide','Karva Chauth m
 <p>Apply mehendi 1–2 days before ${DATE_STR} so it darkens fully for the puja.</p>
 <h2>Aftercare for dark colour</h2>
 <p>Let the paste dry and fall off on its own — do not wash it off. Avoid soap for a few hours after, seal with a lemon-sugar dab while it dries, and keep hands warm. Colour deepens over 24–48 hours.</p>
-<div class="ad-slot" aria-hidden="true"></div>`);
+${adSlot()}`);
 
 page('songs.html','Karva Chauth Songs — Popular Bollywood Playlist','Popular Karva Chauth songs from Bollywood films for the evening puja and moonrise.',
 `<h1>Karva Chauth Songs</h1>
@@ -300,7 +318,7 @@ page('songs.html','Karva Chauth Songs — Popular Bollywood Playlist','Popular K
 </table>
 <h2>Traditional</h2>
 <p>Local Karva Chauth geet — sung by women while rotating the thali around the katha — vary by region. Ask an elder in the family; that is also the sweetest part of the evening.</p>
-<div class="ad-slot" aria-hidden="true"></div>`);
+${adSlot()}`);
 
 page('about.html','About karvachauth','About this Karva Chauth 2026 moonrise time guide.',
 `<h1>About</h1>
@@ -322,7 +340,6 @@ ${['katha','sargi','vidhi','mehendi','songs','about'].map(p=>`<url><loc>${SITE}/
 ${data.map(c=>`<url><loc>${SITE}/cities/${c.slug}.html</loc><lastmod>2026-09-21</lastmod><priority>0.9</priority></url>`).join('\n')}
 </urlset>`);
 
-console.log('DONE. Files:');
-console.log(fs.readdirSync(outDir).join(', '));
+console.log('DONE.');
 console.log('cities:', fs.readdirSync(path.join(outDir,'cities')).length);
-console.log('Sample Delhi:', data.find(c=>c.slug==='new-delhi').moonriseStr, '| Mumbai:', data.find(c=>c.slug==='mumbai').moonriseStr, '| Kolkata:', data.find(c=>c.slug==='kolkata').moonriseStr);
+console.log('Delhi:', data.find(c=>c.slug==='new-delhi').moonriseStr, '| ad slots rendered:', AD_CLIENT ? 'YES' : 'NO (hidden until ads connected)');
