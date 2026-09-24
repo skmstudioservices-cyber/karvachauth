@@ -102,6 +102,17 @@ function head(title, desc, extra='', canon) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${canon || SITE + '/'}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#7a1f2b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Karva Chauth 2026">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:image" content="https://karvachauth.pages.dev/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Karva Chauth 2026","url":"https://karvachauth.pages.dev/"}</script>
 <style>body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;margin:0;background:#fdf8f2;color:#2b1a12;line-height:1.6}
 header{background:#7a1f2b;color:#fff;padding:1rem;text-align:center}
 header a{color:#f5d68a;text-decoration:none;font-weight:600}
