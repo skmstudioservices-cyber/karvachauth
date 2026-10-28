@@ -191,8 +191,8 @@ for (const c of data) {
   const faqLd = JSON.stringify({'@context':'https://schema.org','@type':'FAQPage','mainEntity':faq.map(([q,a])=>({'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}}))}, null, 0);
   const bcLd = JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
     {'@type':'ListItem','position':1,'name':'Home','item':SITE+'/'},
-    {'@type':'ListItem','position':2,'name':c.name,'item':`${SITE}/cities/${c.slug}.html`}]});
-  const html = head(title, desc, `<script type="application/ld+json">${faqLd}</script>\n<script type="application/ld+json">${bcLd}</script>`, `${SITE}/cities/${c.slug}.html`)
+    {'@type':'ListItem','position':2,'name':c.name,'item':`${SITE}/cities/${c.slug}`}]});
+  const html = head(title, desc, `<script type="application/ld+json">${faqLd}</script>\n<script type="application/ld+json">${bcLd}</script>`, `${SITE}/cities/${c.slug}`)
   + `<nav class="crumbs"><a href="/">Home</a> › ${c.name}</nav>
 <h1>🌙 Karva Chauth 2026 Moonrise Time — ${c.name}</h1>
 <p><strong>${DATE_STR}</strong> · ${c.state} · Fast ends at moonrise below.</p>
@@ -226,7 +226,7 @@ ${faq.map(([q,a])=>`<h3>${q}</h3><p>${a}</p>`).join('\n')}
 const rows = data.map(c=>`<tr><td><a href="/cities/${c.slug}.html">${c.name}</a></td><td>${c.state}</td><td>${c.sunriseStr}</td><td><strong>${c.moonriseStr}</strong></td><td>${c.fastLen}</td></tr>`).join('\n');
 const home = head('Karva Chauth 2026 — Moonrise Time by City (29 October)', 'Karva Chauth 2026 date: Thursday 29 October. City-wise moonrise times, fast opening and ending timings, sargi, puja muhurat, vrat katha and guide.')
 + `<h1>🌕 Karva Chauth 2026 — City-wise Moonrise Times</h1>
-<p><strong>${DATE_STR}</strong> (India). The nirjala fast begins before sunrise with sargi and is broken only after sighting the moon. The moon rises up to 98 minutes apart across India — check <em>your</em> city, not a forwarded time.</p>
+<p><strong>${DATE_STR}</strong> (India). The nirjala fast begins before sunrise with sargi and is broken only after sighting the moon. The moon rises up to 100 minutes apart across India — check <em>your</em> city, not a forwarded time.</p>
 <p>Fast in North America is observed on <strong>28 October 2026</strong> (the tithi falls a day earlier there).</p>
 <input type="search" id="q" placeholder="Search your city… e.g. Delhi, Jaipur, Indore" oninput="filter(this.value)">
 ${adSlot()}
@@ -349,9 +349,9 @@ fs.writeFileSync(path.join(outDir,'404.html'), head('Page not found','Page not f
 fs.writeFileSync(path.join(outDir,'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
 fs.writeFileSync(path.join(outDir,'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>${SITE}/</loc><lastmod>2026-09-21</lastmod><priority>1.0</priority></url>
-${['katha','sargi','vidhi','mehendi','songs','about'].map(p=>`<url><loc>${SITE}/${p}.html</loc><lastmod>2026-09-21</lastmod><priority>0.8</priority></url>`).join('\n')}
-${data.map(c=>`<url><loc>${SITE}/cities/${c.slug}.html</loc><lastmod>2026-09-21</lastmod><priority>0.9</priority></url>`).join('\n')}
+<url><loc>${SITE}/</loc><lastmod>2026-10-28</lastmod><priority>1.0</priority></url>
+${['katha','sargi','vidhi','mehendi','songs','about'].map(p=>`<url><loc>${SITE}/${p}</loc><lastmod>2026-10-28</lastmod><priority>0.8</priority></url>`).join('\n')}
+${data.map(c=>`<url><loc>${SITE}/cities/${c.slug}</loc><lastmod>2026-10-28</lastmod><priority>0.9</priority></url>`).join('\n')}
 </urlset>`);
 
 console.log('DONE.');
